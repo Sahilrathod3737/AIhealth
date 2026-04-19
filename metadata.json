@@ -1,6 +1,0 @@
-{
-  "name": "HeartHealth Predictor",
-  "description": "AI-powered heart disease risk assessment and prevention guide using Random Forest classification.",
-  "requestFramePermissions": [],
-  "majorCapabilities": []
-}
