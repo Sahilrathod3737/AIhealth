@@ -65,14 +65,12 @@ function Layout({ children }: { children: React.ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   
   return (
-    <div className="min-h-screen bg-brand-bg transition-colors duration-300 flex flex-col items-center">
-      <header className="w-full bg-brand-surface border-b border-brand-border px-6 py-4 flex justify-between items-center max-w-7xl mx-auto rounded-b-xl shadow-sm z-50 sticky top-0">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-brand-accent dark:bg-dark-accent rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-accent/20">
-            <Heart className="w-6 h-6" />
-          </div>
-          <span className="font-serif text-2xl font-bold text-brand-primary dark:text-dark-primary tracking-tight">HeartHealth AI</span>
-        </div>
+   <NavLink to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+  <div className="w-10 h-10 bg-brand-accent dark:bg-dark-accent rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-accent/20">
+    <Heart className="w-6 h-6" />
+  </div>
+  <span className="font-serif text-2xl font-bold text-brand-primary dark:text-dark-primary tracking-tight">HeartHealth AI</span>
+</NavLink>
 
         <nav className="hidden md:flex items-center gap-1">
           <MenuLink to="/" icon={<HomeIcon size={18} />} label="Home" />
