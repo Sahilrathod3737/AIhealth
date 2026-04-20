@@ -61,16 +61,19 @@ interface PredictionResult {
 }
 
 // --- Layout Component ---
+// --- Layout Component ---
 function Layout({ children }: { children: React.ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   
   return (
-   <NavLink to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-  <div className="w-10 h-10 bg-brand-accent dark:bg-dark-accent rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-accent/20">
-    <Heart className="w-6 h-6" />
-  </div>
-  <span className="font-serif text-2xl font-bold text-brand-primary dark:text-dark-primary tracking-tight">HeartHealth AI</span>
-</NavLink>
+    <div className="min-h-screen bg-brand-bg transition-colors duration-300 flex flex-col items-center">
+      <header className="w-full bg-brand-surface border-b border-brand-border px-6 py-4 flex justify-between items-center max-w-7xl mx-auto rounded-b-xl shadow-sm z-50 sticky top-0">
+        <NavLink to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <div className="w-10 h-10 bg-brand-accent dark:bg-dark-accent rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-accent/20">
+            <Heart className="w-6 h-6" />
+          </div>
+          <span className="font-serif text-2xl font-bold text-brand-primary dark:text-dark-primary tracking-tight">HeartHealth AI</span>
+        </NavLink>
 
         <nav className="hidden md:flex items-center gap-1">
           <MenuLink to="/" icon={<HomeIcon size={18} />} label="Home" />
@@ -99,88 +102,6 @@ function Layout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
-function MenuLink({ to, icon, label }: { to: string, icon: any, label: string }) {
-  return (
-    <NavLink 
-      to={to} 
-      className={({ isActive }) => cn(
-        "nav-item",
-        isActive && "nav-item-active"
-      )}
-    >
-      {icon}
-      <span>{label}</span>
-    </NavLink>
-  );
-}
-
-// --- Home Page ---
-function HomePage() {
-  return (
-    <div className="space-y-12 py-8">
-      <section className="text-center max-w-3xl mx-auto space-y-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-block"
-        >
-          <span className="pill">Next-Gen Cardiac Analytics</span>
-        </motion.div>
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl md:text-6xl font-black text-brand-primary dark:text-dark-primary leading-tight"
-        >
-          Predicting Your Heart's Future <br/>
-          <span className="text-brand-accent dark:text-dark-accent">With Precision AI</span>
-        </motion.h1>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg text-brand-text-muted dark:text-dark-text-muted leading-relaxed"
-        >
-          Harnessing the power of Random Forest machines to detect risks before they become crises. 
-          Advanced diagnostics meets intuitive design for clinical-grade insights.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-4 pt-4"
-        >
-          <NavLink to="/predictor" className="px-8 py-4 bg-brand-primary dark:bg-dark-primary text-white font-bold rounded-2xl shadow-xl shadow-brand-primary/20 hover:scale-105 transition-transform">
-            Start Assessment
-          </NavLink>
-          <NavLink to="/about" className="px-8 py-4 bg-brand-surface border border-brand-border text-brand-primary font-bold rounded-2xl hover:bg-brand-bg transition-colors">
-            Learn More
-          </NavLink>
-        </motion.div>
-      </section>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <FeatureCard 
-          icon={<BrainCircuit className="text-brand-accent h-8 w-8" />}
-          title="Random Forest AI"
-          desc="Trained on thousands of clinical records to identify subtle patterns in your health data."
-        />
-        <FeatureCard 
-          icon={<HistoryIcon className="text-blue-500 h-8 w-8" />}
-          title="Diagnostic History"
-          desc="Track your heart health over time with local encrypted storage for all assessments."
-        />
-        <FeatureCard 
-          icon={<Upload className="text-amber-500 h-8 w-8" />}
-          title="Bulk Processing"
-          desc="Upload CSV files for rapid batch analysis of entire patient cohorts or datasets."
-        />
-      </div>
-    </div>
-  );
-}
-
 function FeatureCard({ icon, title, desc }: any) {
   return (
     <div className="card-base hover:border-brand-accent transition-all hover:translate-y-[-4px]">
